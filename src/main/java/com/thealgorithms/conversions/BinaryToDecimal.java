@@ -7,6 +7,16 @@ import java.util.Scanner;
  */
 class BinaryToDecimal {
 
+    public static int binaryToDecimal(int binNum){
+        int binCopy, d, s = 0, power = 0;
+        binCopy = binNum;
+        while (binCopy != 0) {
+            d = binCopy % 10;
+            s += d * (int) Math.pow(2, power++);
+            binCopy /= 10;
+        }
+        return s;
+    }
     /**
      * Main Method
      *
@@ -14,15 +24,10 @@ class BinaryToDecimal {
      */
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        int binNum, binCopy, d, s = 0, power = 0;
+        int binNum, s = 0;
         System.out.print("Binary number: ");
         binNum = sc.nextInt();
-        binCopy = binNum;
-        while (binCopy != 0) {
-            d = binCopy % 10;
-            s += d * (int) Math.pow(2, power++);
-            binCopy /= 10;
-        }
+        s=binaryToDecimal(binNum);
         System.out.println("Decimal equivalent:" + s);
         sc.close();
     }
